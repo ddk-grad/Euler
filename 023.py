@@ -22,5 +22,30 @@ two abundant numbers is less than this limit.
 Find the sum of all the positive integers which cannot be written as the
 sum of two abundant numbers.
 """
+import euler_utils as utils
 
+divisor_sum = lambda number:sum(utils.divisors_of(number))
 
+abundant_numbers = []
+
+for i in range(12, 28124):
+  if divisor_sum(i) > i:
+    abundant_numbers.append(i)
+
+abundant_set = set(abundant_numbers)
+
+total = sum([x for x in range(24)]) #+ sum([x for x in range(25, 28124,2)])
+print total 
+
+for num in range(25, 28124, 1):
+  index = 0
+  isSum = False
+  while abundant_numbers[index] < num:
+    if (num - abundant_numbers[index]) in abundant_set:
+      isSum = True
+      break
+    index += 1
+  if ~isSum:
+    total += num
+
+print total

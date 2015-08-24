@@ -21,5 +21,8 @@ def divisors_of(number):
     for i in range(2, int(math.sqrt(number))+1, 1):
         if number % i == 0:
             divisors.append(i)
-            divisors.append(number/i)
+            second_number = number/i
+            if second_number != i:
+              divisors.append(second_number)
     return divisors
+
