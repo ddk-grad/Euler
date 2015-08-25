@@ -32,10 +32,10 @@ for i in range(12, 28124):
   if divisor_sum(i) > i:
     abundant_numbers.append(i)
 
+
 abundant_set = set(abundant_numbers)
 
 total = sum([x for x in range(24)]) #+ sum([x for x in range(25, 28124,2)])
-print total 
 
 for num in range(25, 28124, 1):
   index = 0
@@ -45,7 +45,7 @@ for num in range(25, 28124, 1):
       isSum = True
       break
     index += 1
-  if ~isSum:
+  if not isSum:
     total += num
 
 print total
