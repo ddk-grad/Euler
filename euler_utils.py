@@ -26,3 +26,12 @@ def divisors_of(number):
               divisors.append(second_number)
     return divisors
 
+def factorial_of(number):
+  if number < 2:
+    return 1
+  else:
+    answer = 1
+    for i in range(2,number+1):
+      answer *= i
+  return answer
+
