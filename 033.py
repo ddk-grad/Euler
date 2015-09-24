@@ -16,4 +16,15 @@ If the product of these four fractions is given in its lowest common
 terms, find the value of the denominator.
 """
 
+import euler_utils as utils
 
+numerator = 1
+denominator = 1
+
+for i in range(10,99):
+    for j in range(i+1, 100):
+        if str(i)[1] == str(j)[0] and str(j)[1] != '0' and float(i)/float(j) == float(str(i)[0])/float(str(j)[1]):
+            numerator *= i
+            denominator *= j
+
+print utils.prod(utils.remove_from_list(utils.prime_factors(denominator), utils.prime_factors(numerator)))
