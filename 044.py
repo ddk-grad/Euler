@@ -15,4 +15,32 @@ and difference is pentagonal and D = |P[k] - P[j]| is minimised; what is
 the value of D?
 """
 
+pentagons = [(i * ((3 * i) - 1)) / 2 for i in range(1, 10000)]
+pentagons_set = set(pentagons)
+"""
+# print pentagons
+#pentagons_set = set(pentagons)
 
+numbers = [pentagons[i] for i in range(len(pentagons)) if pentagons[i]%3 == 1]
+numbers_set = set(numbers)
+
+print numbers
+
+potential_pentagons = [pentagons[i] for i in range(2,len(pentagons)) if (pentagons[i]-pentagons[i-1]) in numbers_set]
+print potential_pentagons
+
+index = 1
+for num in potential_pentagons:
+    if (num - 2*numbers[index]) in pentagons_set:
+        print num, numbers[index]
+        break
+    index += 1
+"""
+for i in range(1, len(pentagons)-1):
+    for j in range(i+1, len(pentagons)):
+        if (pentagons[i] + pentagons[j]) in pentagons_set and (pentagons[j] - pentagons[i]) in pentagons_set:
+            print pentagons[j]-pentagons[i]
+            break
+    else:
+        continue
+    break

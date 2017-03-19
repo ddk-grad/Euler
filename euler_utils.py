@@ -11,8 +11,10 @@ def primes_till(limit):
     # just eliminate all even numbers
     for x in range(4, limit + 1, 2):
         sieve[x] = False
-    # consider only odd products of odd prime numbers
-    for num in range(3, int(math.sqrt(limit - 1)), 2):
+    # consider only odd products of prime numbers
+    dlimit = int(math.sqrt(limit))
+    print dlimit
+    for num in range(3, dlimit, 2):
         if sieve[num]:
             for p in range(3, limit / num + 1, 2):
                 sieve[num * p] = False
@@ -70,6 +72,7 @@ def is_prime(num):
             return False
     return True
 
+
 def remove_from_list(a, b):
     for x in b:
         if x in a:
@@ -84,7 +87,11 @@ def prod(factors):
 def generate_permutations(source):
     if len(source) > 0:
         for i in range(len(source)):
-            for perm in generate_permutations(source[:i]+ source[i+1:]):
+            for perm in generate_permutations(source[:i] + source[i+1:]):
                 yield source[i]+''.join(perm)
     else:
         yield ''
+
+
+if __name__ == '__main__':
+    print primes_till(100000000)[-1]
